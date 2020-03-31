@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const PORT = process.env.PORT || 5000;
+const {
+    errors
+} = require('celebrate');
+
 
 const routes = require('./routes/routes')
 
@@ -14,6 +17,7 @@ app.use(cors());
 //routes config
 app.use(routes)
 
-app.listen(PORT, () => {
-    console.log('server on')
-})
+//erros config
+app.use(errors());
+
+module.exports = app;
